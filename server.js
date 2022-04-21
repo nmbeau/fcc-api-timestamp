@@ -23,7 +23,8 @@ app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
 
-// date converstion function
+// *** BEGIN MY CODE ***
+// date conversion function
 let apiDateObject = (in_str) => {
   // convert input to int if all digits
   if (/^\d+$/.test(in_str)) {
@@ -57,6 +58,7 @@ app.get("/api/:date", (req, res) => {
 app.get("/api", (req, res) => {
   res.json(apiDateObject(Date.now()))
 })
+// *** END MY CODE ***
 
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {
