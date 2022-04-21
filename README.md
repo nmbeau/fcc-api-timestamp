@@ -3,7 +3,7 @@
 
 [My solution!](https://boilerplate-project-timestamp-1.willbeaumont.repl.co/)
 
-I added an API to return a JSON object with unix and a formatted string date. The request returns an object 
+I added an API in `server.js` to return a JSON object with unix and a formatted string date. The request returns an object 
 for valid dates parsed by `new Date()`. Invalid dates return `{ error : "Invalid Date" }`.
 
 ## Prompt
