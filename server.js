@@ -18,13 +18,45 @@ app.get("/", function (req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
-
 // your first API endpoint... 
 app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
 
+// date converstion function
+let apiDateObject = (in_str) => {
+  // convert input to int if all digits
+  if (/^\d+$/.test(in_str)) {
+    in_date = parseInt(in_str);
+  } else {
+    in_date = in_str;
+  };
+  
+  let oDate = new Date(in_date);
 
+  // test if in_date was valid else convert to unix/utc
+  if (oDate == "Invalid Date") {
+    return {
+      error: "Invalid Date"
+    };
+  } else {
+    let sUTC = oDate.toUTCString();
+    return {
+      unix: Date.parse(sUTC),
+      utc: sUTC
+    };
+  };
+}
+
+// date API endpoint to accept param
+app.get("/api/:date", (req, res) => {
+  res.json(apiDateObject(req.params.date))
+})
+
+// return current time if no date passed
+app.get("/api", (req, res) => {
+  res.json(apiDateObject(Date.now()))
+})
 
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {
