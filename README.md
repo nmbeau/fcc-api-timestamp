@@ -6,7 +6,7 @@
 I added an API in `server.js` to return a JSON object with unix and a formatted string date. The request returns an object 
 for valid dates parsed by `new Date()`. Invalid dates return `{ error : "Invalid Date" }`.
 
-## Prompt
+## User Stories
 * You should provide your own project, not the example URL.
 
 * A request to `/api/:date?` with a valid date should return a JSON object with a `unix` key that is a Unix timestamp of the input date in milliseconds (as type Number)
